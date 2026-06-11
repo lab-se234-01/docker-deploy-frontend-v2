@@ -1,4 +1,5 @@
 services:
+  # 这是你的最新版 V2 (保持不变)
   frontend:
     image: liamsbx/234-deploylab-frontend:latest
     pull_policy: always
@@ -7,4 +8,12 @@ services:
     environment:
       - VITE_GRAPHQL_URI=http://50.17.96.210:8082/graphql
       - VITE_SERVER_URI=http://50.17.96.210:8082
+    restart: unless-stopped
+
+  # 这是顶替出战的老版本 V1
+  frontend-v1:
+    image: liamsbx/my-web-app:latest
+    pull_policy: always
+    ports:
+      - "8083:80"
     restart: unless-stopped
